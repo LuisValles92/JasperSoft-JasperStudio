@@ -11,11 +11,16 @@ import java.util.List;
 import java.util.Map;
 
 public class FirstReport {
+
+    /*
+        Parameter - $P{}
+        Field - $F{}
+        Variable - $V{}
+     */
+
     public static void main(String[] args) {
         try {
             String filePath = "C:\\REPOSITORIOS\\PERSONAL\\GITHUB\\JasperSoft-JasperStudio\\Jasper-Report\\src\\main\\resources\\FirstReport.jrxml";
-            Map<String, Object> parameters = new HashMap<String, Object>();
-            parameters.put("studentName", "John");
 
             Student student1 = new Student(1L, "Raj", "Joshi", "Happy Street", "Delhi");
             Student student2 = new Student(2L, "Peter", "Smith", "Any Street", "Mumbai");
@@ -25,6 +30,9 @@ public class FirstReport {
             studentList.add(student2);
 
             JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(studentList);
+
+            Map<String, Object> parameters = new HashMap<String, Object>();
+            parameters.put("studentName", "John");
 
             JasperReport jasperReport = JasperCompileManager.compileReport(filePath);
 
@@ -39,6 +47,7 @@ public class FirstReport {
             System.out.println("Report Created...");
         } catch (Exception exception){
             System.out.println("Exception while creating report");
+            exception.printStackTrace();
         }
     }
 }

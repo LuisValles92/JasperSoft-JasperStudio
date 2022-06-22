@@ -46,6 +46,9 @@ public class CustomReport {
             Map<String, Object> parameters = new HashMap<String, Object>();
             parameters.put("studentName", "John");
             parameters.put("tableData", dataSource);
+            parameters.put("subReport", getSubReport());
+            parameters.put("subDataSource", getSubDataSource());
+            parameters.put("subParameters", getSubParameters());
 
             JasperReport jasperReport = JasperCompileManager.compileReport(filePath);
 
@@ -67,4 +70,35 @@ public class CustomReport {
             exception.printStackTrace();
         }
     }
+
+    public static JasperReport getSubReport() {
+        String filePath = "C:\\REPOSITORIOS\\PERSONAL\\GITHUB\\JasperSoft-JasperStudio\\Jasper-Report\\src\\main\\resources\\FirstReport.jrxml";
+        JasperReport jasperReport;
+        try {
+            jasperReport = JasperCompileManager.compileReport(filePath);
+            return jasperReport;
+        } catch (JRException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static JRBeanCollectionDataSource getSubDataSource() {
+        Student student1 = new Student(1L, "Raj", "Joshi", "Happy Street", "Delhi");
+        Student student2 = new Student(2L, "Peter", "Smith", "Any Street", "Mumbai");
+
+        List<Student> studentList = new ArrayList<Student>();
+        studentList.add(student1);
+        studentList.add(student2);
+
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(studentList);
+        return dataSource;
+    }
+
+    public static Map<String, Object> getSubParameters() {
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("studentName", "Raj");
+        return parameters;
+    }
+
 }

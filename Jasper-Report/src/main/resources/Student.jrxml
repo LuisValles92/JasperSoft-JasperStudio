@@ -42,6 +42,9 @@
 	</subDataset>
 	<parameter name="studentName" class="java.lang.String"/>
 	<parameter name="tableData" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="subReport" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="subDataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="subParameters" class="java.util.Map"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -166,7 +169,7 @@
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="268" splitType="Stretch">
+		<band height="448" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<pieChart>
 				<chart evaluationTime="Report">
@@ -212,6 +215,12 @@
 					</valueAxisFormat>
 				</bar3DPlot>
 			</bar3DChart>
+			<subreport>
+				<reportElement x="0" y="240" width="555" height="200" uuid="582ab706-b67f-417d-8b4b-ac7d8a79f359"/>
+				<parametersMapExpression><![CDATA[$P{subParameters}]]></parametersMapExpression>
+				<dataSourceExpression><![CDATA[$P{subDataSource}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{subReport}]]></subreportExpression>
+			</subreport>
 		</band>
 	</summary>
 </jasperReport>

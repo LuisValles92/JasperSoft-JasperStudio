@@ -1,0 +1,31 @@
+{
+	"info": {
+		"_postman_id": "2ec9885c-6f0f-48d4-b672-0e7da325afe6",
+		"name": "Spring Boot Jasper",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15769248"
+	},
+	"item": [
+		{
+			"name": "GET Student Report",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/student/report",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"student",
+						"report"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
